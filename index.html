@@ -5,39 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="On The Rock – Soirée exclusive à Bandol les 25 & 26 octobre 2025. Musique, animations, packs premium et VIP. Inscrivez-vous maintenant !">
     <title>On The Rock – Bandol 2025</title>
-    <!-- Bootstrap CDN pour design beau et responsive -->
+    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts pour typo élégante -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #111; color: #fff; }
+        body { font-family: 'Roboto', sans-serif; margin: 0; background-color: #111; color: #fff; }
         h1, h2 { font-family: 'Playfair Display', serif; color: #ffd700; } /* Or premium */
-        nav { background: #000; }
+        nav { background: rgba(0,0,0,0.8); }
         .nav-link { color: #fff !important; font-weight: bold; }
-        #home { position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-        #home video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; } /* Overlay pour lisibilité */
-        section { max-width: 1000px; margin: 40px auto; padding: 20px; background: #222; border-radius: 10px; animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .button { background: #ffd700; color: #000; padding: 15px 30px; border: none; border-radius: 5px; font-weight: bold; }
+        #home { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+        #home iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; } /* Pour iframe YouTube */
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; }
+        section { max-width: 1200px; margin: 60px auto; padding: 40px; background: #222; border-radius: 10px; animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .button { background: #ffd700; color: #000; padding: 15px 30px; border: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
         .button:hover { background: #fff; color: #000; }
-        form { max-width: 500px; margin: auto; }
-        footer { background: #000; text-align: center; padding: 20px; }
+        #countdown { font-size: 2rem; color: #ffd700; text-align: center; margin: 20px 0; }
+        .map { height: 400px; }
+        footer { background: #000; text-align: center; padding: 30px; font-size: 0.8rem; }
+        .partners { text-align: center; margin: 40px 0; }
+        .partners img { max-width: 150px; margin: 10px; filter: grayscale(1); transition: filter 0.3s; }
+        .partners img:hover { filter: grayscale(0); }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">On The Rock</a>
+            <a class="navbar-brand" href="#">On The Rock - Ardèche 2025</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#programme">Programme</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#packs">Packs & Entrées</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packs">Packs</a></li>
                     <li class="nav-item"><a class="nav-link" href="#modeles">Modèles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#lieu">Lieu</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -46,83 +52,64 @@
 
     <header id="home" class="container-fluid">
         <iframe src="https://www.youtube.com/embed/OUWsT_9WuW8?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&playlist=OUWsT_9WuW8" 
-                frameborder="0" allowfullscreen allow="autoplay; fullscreen" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>
         <div class="overlay"></div>
         <div class="container position-relative">
             <h1 class="display-1">On The Rock – Bandol</h1>
-            <p class="lead">25 & 26 octobre 2025 – Villa On The Rock</p>
-            <p>2 DJs, 2 ambiances, villa de rêve, food & drinks illimités, espace VIP exclusif.</p>
-            <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank">Acheter mon Pack</a>
+            <p class="lead">25 & 26 octobre 2025 – Villa On The Rock, Bandol</p>
+            <p>Trois soirées musicales inoubliables dans un cadre exceptionnel près des gorges de l'Ardèche.</p>
+            <div id="countdown"></div>
+            <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank">Réserver mon Pack</a>
         </div>
     </header>
 
-    <section id="programme" class="container">
+    <section id="about">
+        <h2>À Propos de l'Événement</h2>
+        <p>Pour sa première édition, On The Rock vous offre deux nuits de musique et d'animations dans la magnifique Villa On The Rock. Découvrez un mélange parfait de nature et de culture, avec vue sur la mer et une piscine aquarium unique. Rejoignez-nous pour voir vos artistes préférés dans un décor à couper le souffle !</p>
+    </section>
+
+    <section id="programme">
         <h2>Programme & Ambiances</h2>
         <p>Soirée jusqu’au bout de la nuit avec deux ambiances musicales :</p>
         <ul class="list-unstyled">
             <li>🎶 DJ Afro / Shatta → En bas devant les vitres de la piscine</li>
             <li>🎶 DJ House Electro / Commercial → En haut</li>
         </ul>
-        <h3>Ambiance & Animations</h3>
-        <p>Olivier Sanchez encadre un shooting photo avec des modèles Instagram qui animeront la soirée.</p>
+        <h3>Animations</h3>
         <ul class="list-unstyled">
-            <li>🔥 Concours de Twerk : Ouvert à tous, gagnez une bouteille de Ruinart Blanc de Blanc.</li>
-            <li>🎟 Tombola gratuite : Tirage avant 23h, lot premium.</li>
-            <li>👑 Élection de Miss On The Rock : Inscription gratuite, défilé à 1h, gagnez un séjour week-end à la villa.</li>
-            <li>Espaces : Table de beer pong, photomaton, table de poker.</li>
+            <li>🔥 Concours de Twerk, Tombola, Élection Miss On The Rock</li>
+            <li>Shooting photo avec Olivier Sanchez et modèles Instagram</li>
+            <li>Espaces : Beer pong, photomaton, poker</li>
         </ul>
-        <h3>Accueil des Invités</h3>
-        <p>Parcours dédié : Bracelet personnalisé, shooting paparazzi, cocktail de bienvenue. De 18h à 22h ; après, autonome.</p>
+        <h3>Accueil</h3>
+        <p>Bracelet personnalisé, shooting paparazzi, cocktail de bienvenue de 18h à 22h.</p>
     </section>
 
-    <section id="packs" class="container">
+    <section id="packs">
         <h2>Entrées & Packs</h2>
         <ul class="list-unstyled">
-            <li>🍸 Entrée Régulière – 50€ : Buffet + vin/bière à volonté</li>
-            <li>🍸 Entrée Premium – 70€ : Pack régulier + alcools premium (rhum, vodka, etc.) + punch</li>
-            <li>🍸 Entrée Champagne – 120€ : Champagne à volonté + tous les avantages</li>
+            <li>🍸 Régulière – 50€ : Buffet + vin/bière</li>
+            <li>🍸 Premium – 70€ : Alcools premium + punch</li>
+            <li>🍸 Champagne – 120€ : Champagne illimité</li>
+            <li>✨ VIP : Staff only, accès anticipé</li>
         </ul>
-        <h3>Pass VIP</h3>
-        <p>Réservé au staff : Accès dès 16h, espace VIP avec toilettes privatives, tous packs inclus.</p>
-        <h3>Système de Parrainage</h3>
-        <p>Devenez parrain pour des réductions :</p>
+        <h3>Parrainage</h3>
+        <p>Réductions pour filleuls : -10€ à -20€, responsabilité du parrain.</p>
+        <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button d-block text-center" target="_blank">Acheter sur Ze Even</a>
+    </section>
+
+    <section id="modeles">
+        <h2>Modèles & Animations</h2>
+        <p>Découvrez les modèles Instagram avec Olivier Sanchez :</p>
         <ul class="list-unstyled">
-            <li>🟢 Filleul régulier → -10€</li>
-            <li>🔵 Filleul premium → -12€</li>
-            <li>🟡 Filleul champagne/golden → -20€</li>
-        </ul>
-        <p>Responsable de votre filleul (accès, incidents).</p>
-        <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank">Acheter via Ze Even</a>
-    </section>
-
-    <section id="modeles" class="container">
-        <h2>Modèles Instagram</h2>
-        <p>Découvrez les modèles qui animeront la soirée avec Olivier Sanchez. Suivez-les sur Instagram :</p>
-        <ul class="list-unstyled">
-            <li><a href="https://www.instagram.com/emilieboutoille/" target="_blank">@emilieboutoille</a> – Modèle shooting</li>
-            <li><a href="https://www.instagram.com/alice.carron/" target="_blank">@alice.carron</a> – Collaboratrice/styliste</li>
-            <li><a href="https://www.instagram.com/hyperion_digital_/" target="_blank">@hyperion_digital_</a> – Agence de Olivier Sanches (mode & shootings)</li>
+            <li><a href="https://www.instagram.com/emilieboutoille/" target="_blank">@emilieboutoille</a></li>
+            <li><a href="https://www.instagram.com/alice.carron/" target="_blank">@alice.carron</a></li>
+            <li><a href="https://www.instagram.com/hyperion_digital_/" target="_blank">@hyperion_digital_</a></li>
         </ul>
     </section>
 
-    <section id="contact" class="container">
-        <h2>Contact</h2>
-        <p>Questions ? Envoyez-nous un message.</p>
-        <form action="https://formspree.io/f/[TON-ID-FORMSPREE]" method="POST" class="row g-3">
-            <div class="col-md-6"><input type="text" class="form-control" name="name" placeholder="Votre nom" required></div>
-            <div class="col-md-6"><input type="email" class="form-control" name="email" placeholder="Votre email" required></div>
-            <div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" rows="5" required></textarea></div>
-            <div class="col-12"><button type="submit" class="button">Envoyer</button></div>
-        </form>
-    </section>
-
-    <footer>
-        <p>On The Rock © 2025 | Villa On The Rock, Bandol, France | Suivez-nous sur <a href="https://x.com/[TON-X]" target="_blank">X</a> | <a href="https://instagram.com/[TON-IG]" target="_blank">Instagram</a></p>
-    </footer>
-
-    <!-- Bootstrap JS pour interactions -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    <section id="lieu">
+        <h2>Le Lieu : Villa On The Rock, Bandol</h2>
+        <p>Un cadre exceptionnel avec piscine aquarium de 28m, vue mer, et architecture unique sur 4 niveaux.</p>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.664!2d5.753!3d43.136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c99b4b4b4b4b4b%3A0x4b4b4b4b4b4b4b4b!2sVilla%20On%20The%20Rock%2C%20Bandol%2C%20France!5e0!3m2!1sfr!2sfr!4v1724515200000" width="100%" height="100%" frameborder="0" allowfullscreen=""
