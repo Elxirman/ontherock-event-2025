@@ -1,128 +1,423 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="On The Rock – Soirée exclusive à Bandol les 25 & 26 octobre 2025. Musique, animations, packs premium et VIP. Inscrivez-vous maintenant !">
-    <title>On The Rock – Bandol 2025</title>
-    <!-- Bootstrap CDN pour design beau et responsive -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts pour typo élégante -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #111; color: #fff; }
-        h1, h2 { font-family: 'Playfair Display', serif; color: #ffd700; } /* Or premium */
-        nav { background: #000; }
-        .nav-link { color: #fff !important; font-weight: bold; }
-        #home { position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-        #home video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; } /* Overlay pour lisibilité */
-        section { max-width: 1000px; margin: 40px auto; padding: 20px; background: #222; border-radius: 10px; animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .button { background: #ffd700; color: #000; padding: 15px 30px; border: none; border-radius: 5px; font-weight: bold; }
-        .button:hover { background: #fff; color: #000; }
-        form { max-width: 500px; margin: auto; }
-        footer { background: #000; text-align: center; padding: 20px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>On The Rock – Bandol 2025 | Soirée Exclusive 25 & 26 Octobre</title>
+  <meta name="description" content="On The Rock – Soirée exclusive à Bandol les 25 & 26 octobre 2025. Musique, animations, packs premium & VIP. Shooting photo, concours, tombola, DJ Afro/Shatta & House. Réservez maintenant !" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="robots" content="index,follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta property="og:title" content="On The Rock – Bandol 2025">
+  <meta property="og:description" content="Soirée exclusive 25 & 26 octobre 2025. 2 DJs, villa de rêve, animations, packs premium & VIP. Rejoignez-nous.">
+  <meta property="og:type" content="event">
+  <meta property="og:image" content="https://example.com/cover-on-the-rock.jpg">
+  <meta property="og:site_name" content="On The Rock">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="On The Rock – Bandol 2025">
+  <meta name="twitter:description" content="2 ambiances musicales, concours, shooting, VIP & champagne à volonté.">
+  <meta name="twitter:image" content="https://example.com/cover-on-the-rock.jpg">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Event",
+    "name":"On The Rock – Bandol 2025",
+    "startDate":"2025-10-25T18:00:00+02:00",
+    "endDate":"2025-10-27T06:00:00+02:00",
+    "eventStatus":"https://schema.org/EventScheduled",
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "location":{
+      "@type":"Place",
+      "name":"Villa On The Rock",
+      "address":{
+        "@type":"PostalAddress",
+        "addressLocality":"Bandol",
+        "addressCountry":"FR"
+      }
+    },
+    "image":["https://example.com/cover-on-the-rock.jpg"],
+    "description":"Soirée exclusive sur 2 jours : DJs Afro/Shatta & House Electro, animations, concours, packs premium & VIP.",
+    "organizer":{
+      "@type":"Organization",
+      "name":"On The Rock",
+      "url":"https://example.com"
+    }
+  }
+  </script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">On The Rock</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#programme">Programme</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#packs">Packs & Entrées</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#modeles">Modèles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+    <div class="container">
+      <a class="navbar-brand fw-bold tracking-wide" href="#home">
+        <span class="brand-icon me-2">&#11088;</span>On The Rock
+      </a>
+      <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#programme">Programme</a></li>
+            <li class="nav-item"><a class="nav-link" href="#packs">Packs & Entrées</a></li>
+            <li class="nav-item"><a class="nav-link" href="#modeles">Modèles</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3">
+              <a href="#packs" class="btn btn-gold btn-sm fw-semibold pulse-once">Acheter</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero-section position-relative">
+    <div class="media-bg">
+      <!-- YouTube Embed (looped) -->
+      <iframe class="yt-bg" src="https://www.youtube.com/embed/OUWsT_9WuW8?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&playsinline=1&playlist=OUWsT_9WuW8" title="On The Rock Teaser" loading="lazy" allow="autoplay; fullscreen"></iframe>
+      <div class="hero-overlay"></div>
+      <div class="noise-layer"></div>
+    </div>
+    <div class="container h-100 position-relative d-flex flex-column justify-content-center text-center text-shadow">
+      <div class="hero-badge mb-3">Edition 2025</div>
+      <h1 class="display-4 fw-bold gradient-gold mb-3">On The Rock – Bandol</h1>
+      <p class="lead mb-2">25 & 26 octobre 2025 · Villa On The Rock</p>
+      <p class="mb-4 small opacity-75">2 DJs, 2 ambiances, villa de rêve, food & drinks illimités, espace VIP exclusif.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="#packs" class="btn btn-gold btn-lg px-4 shadow-lg">Acheter mon Pack</a>
+        <a href="#programme" class="btn btn-outline-light btn-lg px-4">Découvrir</a>
+      </div>
+      <div class="countdown-wrapper mt-5">
+        <div class="row g-3 justify-content-center" id="countdown">
+          <!-- JS injecte les blocs -->
+        </div>
+        <div class="mt-2 small text-uppercase tracking-wide opacity-75">Avant l'ouverture</div>
+      </div>
+      <div class="scroll-indicator mt-5">
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Programme & Ambiances -->
+  <section id="programme" class="section-pad">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title reveal-line">Programme & Ambiances</h2>
+          <p class="text-muted-small mb-4">Soirée jusqu’au bout de la nuit avec deux ambiances musicales :</p>
+          <ul class="icon-list">
+            <li>
+              <span class="icon-bullet">🎶</span>
+              <strong>DJ Afro / Shatta</strong> – En bas devant les vitres de la piscine
+            </li>
+            <li>
+              <span class="icon-bullet">🎶</span>
+              <strong>DJ House Electro / Commercial</strong> – À l’étage
+            </li>
+          </ul>
+
+          <h3 class="mt-5 h5 text-gold">Ambiance & Animations</h3>
+          <p>Olivier Sanchez encadre un shooting photo avec des modèles Instagram qui animeront la soirée.</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h4>🔥 Concours de Twerk</h4>
+              <p>Ouvert à tous · Gagnez une bouteille de Ruinart Blanc de Blanc.</p>
             </div>
+            <div class="feature-item">
+              <h4>🎟 Tombola Gratuite</h4>
+              <p>Tirage avant 23h · Lot premium exclusif.</p>
+            </div>
+            <div class="feature-item">
+              <h4>👑 Miss On The Rock</h4>
+              <p>Défilé à 1h · Séjour week-end à la villa pour la gagnante.</p>
+            </div>
+            <div class="feature-item">
+              <h4>🎲 Espaces Ludiques</h4>
+              <p>Beer pong · Photomaton · Table de poker.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 rounded-3 gradient-border small">
+            <strong>Accueil des invités :</strong> Bracelet personnalisé, shooting paparazzi, cocktail de bienvenue (18h → 22h).
+          </div>
         </div>
-    </nav>
-
-    <header id="home" class="container-fluid">
-        <iframe src="https://www.youtube.com/embed/OUWsT_9WuW8?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&playlist=OUWsT_9WuW8" 
-                frameborder="0" allowfullscreen allow="autoplay; fullscreen" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></iframe>
-        <div class="overlay"></div>
-        <div class="container position-relative">
-            <h1 class="display-1">On The Rock – Bandol</h1>
-            <p class="lead">25 & 26 octobre 2025 – Villa On The Rock</p>
-            <p>2 DJs, 2 ambiances, villa de rêve, food & drinks illimités, espace VIP exclusif.</p>
-            <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank">Acheter mon Pack</a>
+        <div class="col-lg-6">
+          <div class="timeline-card">
+            <h3 class="h5 mb-4 text-gold">Timeline (Indicative)</h3>
+            <ul class="timeline">
+              <li>
+                <div class="time">18:00</div>
+                <div class="desc">Ouverture & accueil VIP anticipé</div>
+              </li>
+              <li>
+                <div class="time">19:30</div>
+                <div class="desc">Mise en ambiance Afro/Shatta + Lounge Electro</div>
+              </li>
+              <li>
+                <div class="time">22:45</div>
+                <div class="desc">Tirage Tombola Premium</div>
+              </li>
+              <li>
+                <div class="time">01:00</div>
+                <div class="desc">Élection Miss On The Rock (défilé)</div>
+              </li>
+              <li>
+                <div class="time">02:30</div>
+                <div class="desc">Concours de Twerk</div>
+              </li>
+              <li>
+                <div class="time">04:00+</div>
+                <div class="desc">Late Night Vibes · Chill terrasse & piscine</div>
+              </li>
+            </ul>
+            <div class="tiny-note">Les horaires peuvent être ajustés le soir de l’événement.</div>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <section id="programme" class="container">
-        <h2>Programme & Ambiances</h2>
-        <p>Soirée jusqu’au bout de la nuit avec deux ambiances musicales :</p>
-        <ul class="list-unstyled">
-            <li>🎶 DJ Afro / Shatta → En bas devant les vitres de la piscine</li>
-            <li>🎶 DJ House Electro / Commercial → En haut</li>
-        </ul>
-        <h3>Ambiance & Animations</h3>
-        <p>Olivier Sanchez encadre un shooting photo avec des modèles Instagram qui animeront la soirée.</p>
-        <ul class="list-unstyled">
-            <li>🔥 Concours de Twerk : Ouvert à tous, gagnez une bouteille de Ruinart Blanc de Blanc.</li>
-            <li>🎟 Tombola gratuite : Tirage avant 23h, lot premium.</li>
-            <li>👑 Élection de Miss On The Rock : Inscription gratuite, défilé à 1h, gagnez un séjour week-end à la villa.</li>
-            <li>Espaces : Table de beer pong, photomaton, table de poker.</li>
-        </ul>
-        <h3>Accueil des Invités</h3>
-        <p>Parcours dédié : Bracelet personnalisé, shooting paparazzi, cocktail de bienvenue. De 18h à 22h ; après, autonome.</p>
-    </section>
+  <!-- Packs & Entrées -->
+  <section id="packs" class="section-pad bg-soft-dark position-relative overflow-hidden">
+    <div class="floating-lights"></div>
+    <div class="container position-relative">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Entrées & Packs</h2>
+        <p class="lead-sm mx-auto mw-650">Choisissez votre expérience. Food & drinks inclus selon votre formule.</p>
+      </div>
+      <div class="row g-4">
+        <!-- Pack Régulier -->
+        <div class="col-md-4">
+          <div class="pricing-card h-100">
+            <div class="pc-head">
+              <h3 class="h5 mb-1">Entrée Régulière</h3>
+              <span class="badge bg-secondary-subtle text-light border border-secondary">Classique</span>
+            </div>
+            <div class="price">
+              <span class="currency">€</span><span class="amount">50</span>
+            </div>
+            <ul class="pc-features">
+              <li>Buffet inclus</li>
+              <li>Vin & bière à volonté</li>
+              <li>Accès aux animations</li>
+              <li>Participation concours</li>
+            </ul>
+            <a href="https://ze-even.example.com/regulier" class="btn btn-outline-light w-100 mt-auto">Choisir</a>
+          </div>
+        </div>
+        <!-- Pack Premium -->
+        <div class="col-md-4">
+          <div class="pricing-card highlight h-100">
+            <div class="pc-head">
+              <h3 class="h5 mb-1">Entrée Premium</h3>
+              <span class="badge bg-gold text-dark">Populaire</span>
+            </div>
+            <div class="price">
+              <span class="currency">€</span><span class="amount">70</span>
+            </div>
+            <ul class="pc-features">
+              <li>Tous avantages Régulier</li>
+              <li>Alcools premium (rhum, vodka...)</li>
+              <li>Punch signature</li>
+              <li>File prioritaire bar</li>
+            </ul>
+            <a href="https://ze-even.example.com/premium" class="btn btn-gold w-100 mt-auto shadow-sm">Je prends</a>
+          </div>
+        </div>
+        <!-- Pack Champagne -->
+        <div class="col-md-4">
+          <div class="pricing-card h-100">
+            <div class="pc-head">
+              <h3 class="h5 mb-1">Entrée Champagne</h3>
+              <span class="badge bg-primary">Exclusif</span>
+            </div>
+            <div class="price">
+              <span class="currency">€</span><span class="amount">120</span>
+            </div>
+            <ul class="pc-features">
+              <li>Champagne à volonté</li>
+              <li>Tous packs inclus</li>
+              <li>Accès zone privilégiée</li>
+              <li>Cadeau édition 2025</li>
+            </ul>
+            <a href="https://ze-even.example.com/champagne" class="btn btn-outline-light w-100 mt-auto">Réserver</a>
+          </div>
+        </div>
+      </div>
 
-    <section id="packs" class="container">
-        <h2>Entrées & Packs</h2>
-        <ul class="list-unstyled">
-            <li>🍸 Entrée Régulière – 50€ : Buffet + vin/bière à volonté</li>
-            <li>🍸 Entrée Premium – 70€ : Pack régulier + alcools premium (rhum, vodka, etc.) + punch</li>
-            <li>🍸 Entrée Champagne – 120€ : Champagne à volonté + tous les avantages</li>
-        </ul>
-        <h3>Pass VIP</h3>
-        <p>Réservé au staff : Accès dès 16h, espace VIP avec toilettes privatives, tous packs inclus.</p>
-        <h3>Système de Parrainage</h3>
-        <p>Devenez parrain pour des réductions :</p>
-        <ul class="list-unstyled">
-            <li>🟢 Filleul régulier → -10€</li>
-            <li>🔵 Filleul premium → -12€</li>
-            <li>🟡 Filleul champagne/golden → -20€</li>
-        </ul>
-        <p>Responsable de votre filleul (accès, incidents).</p>
-        <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank">Acheter via Ze Even</a>
-    </section>
+      <div class="row g-4 mt-5">
+        <div class="col-lg-7">
+          <div class="referral-box">
+            <h3 class="h5 text-gold mb-3">Système de Parrainage</h3>
+            <p class="mb-3">Devenez parrain et obtenez des réductions selon le type de pack de vos filleuls :</p>
+            <ul class="icon-list small">
+              <li><span class="icon-bullet">🟢</span>Filleul Régulier → <strong>-10€</strong></li>
+              <li><span class="icon-bullet">🔵</span>Filleul Premium → <strong>-12€</strong></li>
+              <li><span class="icon-bullet">🟡</span>Filleul Champagne / Golden → <strong>-20€</strong></li>
+            </ul>
+            <div class="mt-3 tiny-note">Le parrain reste responsable de son filleul (accès & incidents).</div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="vip-box">
+            <h3 class="h5 text-gold mb-2">Pass VIP (Staff)</h3>
+            <p class="mb-2">Accès dès 16h, espace VIP privatif (toilettes dédiées), cumul de tous les avantages.</p>
+            <p class="small opacity-75 mb-0">Limité & nominatif · Sur validation uniquement.</p>
+          </div>
+        </div>
+      </div>
 
-    <section id="modeles" class="container">
-        <h2>Modèles Instagram</h2>
-        <p>Découvrez les modèles qui animeront la soirée avec Olivier Sanchez. Suivez-les sur Instagram :</p>
-        <ul class="list-unstyled">
-            <li><a href="https://www.instagram.com/emilieboutoille/" target="_blank">@emilieboutoille</a> – Modèle shooting</li>
-            <li><a href="https://www.instagram.com/alice.carron/" target="_blank">@alice.carron</a> – Collaboratrice/styliste</li>
-            <li><a href="https://www.instagram.com/hyperion_digital_/" target="_blank">@hyperion_digital_</a> – Agence de Olivier Sanches (mode & shootings)</li>
-        </ul>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="container">
-        <h2>Contact</h2>
-        <p>Questions ? Envoyez-nous un message.</p>
-        <form action="https://formspree.io/f/[TON-ID-FORMSPREE]" method="POST" class="row g-3">
-            <div class="col-md-6"><input type="text" class="form-control" name="name" placeholder="Votre nom" required></div>
-            <div class="col-md-6"><input type="email" class="form-control" name="email" placeholder="Votre email" required></div>
-            <div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" rows="5" required></textarea></div>
-            <div class="col-12"><button type="submit" class="button">Envoyer</button></div>
-        </form>
-    </section>
+  <!-- Modèles Instagram -->
+  <section id="modeles" class="section-pad">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Modèles Instagram</h2>
+        <p class="lead-sm mx-auto mw-650">Découvrez les modèles présents avec <strong>Olivier Sanchez</strong>. Suivez-les.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="model-card">
+            <div class="model-img">
+              <img src="assets/img/profile-emilieboutoille.jpg" alt="Profil @emilieboutoille">
+            </div>
+            <div class="model-body">
+              <h3 class="h6 mb-1">@emilieboutoille</h3>
+              <p class="small mb-2">Modèle shooting</p>
+              <a href="https://instagram.com/emilieboutoille" target="_blank" rel="noopener" class="model-link">Suivre</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="model-card">
+            <div class="model-img">
+              <img src="assets/img/profile-alice.carron.jpg" alt="Profil @alice.carron">
+            </div>
+            <div class="model-body">
+              <h3 class="h6 mb-1">@alice.carron</h3>
+              <p class="small mb-2">Collaboratrice / Styliste</p>
+              <a href="https://instagram.com/alice.carron" target="_blank" rel="noopener" class="model-link">Suivre</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="model-card">
+            <div class="model-img">
+              <img src="assets/img/profile-hyperion_digital_.jpg" alt="Profil @hyperion_digital_">
+            </div>
+            <div class="model-body">
+              <h3 class="h6 mb-1">@hyperion_digital_</h3>
+              <p class="small mb-2">Agence d’Olivier Sanchez (mode & shootings)</p>
+              <a href="https://instagram.com/hyperion_digital_" target="_blank" rel="noopener" class="model-link">Suivre</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <footer>
-        <p>On The Rock © 2025 | Villa On The Rock, Bandol, France | Suivez-nous sur <a href="https://x.com/[TON-X]" target="_blank">X</a> | <a href="https://instagram.com/[TON-IG]" target="_blank">Instagram</a></p>
-    </footer>
+      <div class="mt-5 p-4 rounded-4 glass-box small">
+        Intéressé(e) pour apparaître en tant que modèle ou partenaire ? <a href="#contact" class="text-gold fw-semibold">Contactez-nous</a>.
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap JS pour interactions -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Contact -->
+  <section id="contact" class="section-pad bg-soft-dark">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5">
+          <h2 class="section-title">Contact</h2>
+          <p class="lead-sm">Questions ? Envoyez-nous un message. Nous répondons rapidement.</p>
+          <ul class="contact-list small mt-4">
+            <li><span class="icon-bullet">📍</span>Villa On The Rock, Bandol, France</li>
+            <li><span class="icon-bullet">📧</span><a href="mailto:contact@ontherock.fr" class="text-decoration-none">contact@ontherock.fr</a></li>
+            <li><span class="icon-bullet">📱</span><a href="tel:+33600000000" class="text-decoration-none">+33 6 00 00 00 00</a></li>
+          </ul>
+          <div class="socials mt-4">
+            <a href="#" class="social-link" aria-label="Instagram"><span class="ri"></span></a>
+            <a href="#" class="social-link" aria-label="X"><span class="ri">𝕏</span></a>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <form id="contactForm" novalidate class="needs-validation">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nom *</label>
+                <input type="text" name="nom" class="form-control form-control-dark" required>
+                <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-control form-control-dark" required>
+                <div class="invalid-feedback">Adresse email invalide.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Objet</label>
+                <input type="text" name="objet" class="form-control form-control-dark">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Téléphone</label>
+                <input type="tel" name="telephone" class="form-control form-control-dark">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message *</label>
+                <textarea name="message" rows="5" class="form-control form-control-dark" required placeholder="Votre message"></textarea>
+                <div class="invalid-feedback">Le message est requis.</div>
+              </div>
+              <div class="col-12 d-flex align-items-center gap-3">
+                <div class="form-check small">
+                  <input class="form-check-input" type="checkbox" value="1" id="rgpd" required>
+                  <label class="form-check-label" for="rgpd">J’accepte la politique de confidentialité.</label>
+                  <div class="invalid-feedback">Obligatoire.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-gold px-4" id="submitBtn">
+                  Envoyer
+                  <span class="spinner-border spinner-border-sm ms-2 d-none" id="loadingSpinner"></span>
+                </button>
+                <div id="formStatus" class="small mt-3"></div>
+              </div>
+            </div>
+          </form>
+          <div class="tiny-note mt-4">Ce formulaire n’est pas encore relié à un backend – configurez un service (Formspree, EmailJS, API...).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 footer-dark">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6 small">
+          <strong>On The Rock © 2025</strong> · Villa On The Rock, Bandol, France<br>
+          Tous droits réservés · <a href="#" class="text-decoration-none text-gold">Mentions légales</a>
+        </div>
+        <div class="col-md-6 text-md-end small">
+          Suivez-nous :
+          <a href="#" class="text-decoration-none ms-2 hover-gold">X</a> ·
+          <a href="#" class="text-decoration-none hover-gold">Instagram</a>
+        </div>
+      </div>
+      <div class="divider my-4"></div>
+      <div class="tiny-note text-center">Design généré avec passion · Optimisé pour mobile & performance.</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+    <span>&uarr;</span>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
-
 </html>
