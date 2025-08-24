@@ -10,27 +10,87 @@
   <style>
     :root{
       --gold:#ffd700;
-      --gold-grad:linear-gradient(135deg,#d4b73c,#ffe889,#d4b73c);
-      --bg:#111;
-      --panel:#222;
+      --gold-rgb:255,215,0;
+      --gold-grad:linear-gradient(135deg,#d9b326,#ffe57a,#d9b326);
+      --bg:#0b0b0f;
+      --bg-alt:#141418;
+      --panel:#1d1e23;
+      --glow-soft:0 0 12px rgba(var(--gold-rgb),.35),0 0 28px rgba(var(--gold-rgb),.18);
+      --glow-strong:0 0 18px rgba(var(--gold-rgb),.55),0 0 42px rgba(var(--gold-rgb),.3);
     }
     *{box-sizing:border-box;}
     body{
       margin:0;
       font-family:'Roboto',sans-serif;
-      background:var(--bg);
+      background:
+        radial-gradient(circle at 18% 12%,rgba(var(--gold-rgb),.10),transparent 55%),
+        radial-gradient(circle at 85% 80%,rgba(120,90,10,.25),transparent 65%),
+        linear-gradient(145deg,#050507,#121217 55%,#08080b);
       color:#fff;
       scroll-behavior:smooth;
+      position:relative;
+      min-height:100vh;
+    }
+    body:before, body:after{
+      content:"";
+      position:fixed;
+      width:600px;
+      height:600px;
+      border-radius:50%;
+      top:-180px;
+      left:-180px;
+      background:radial-gradient(circle at center,rgba(var(--gold-rgb),.22),transparent 70%);
+      filter:blur(80px);
+      opacity:.35;
+      pointer-events:none;
+      animation: drift 18s linear infinite;
+      mix-blend-mode:screen;
+    }
+    body:after{
+      top:auto;bottom:-160px;
+      left:auto;right:-160px;
+      animation-delay:-9s;
+      background:radial-gradient(circle at center,rgba(var(--gold-rgb),.18),transparent 70%);
+    }
+    @keyframes drift{
+      0%{transform:translate(0,0) scale(1);}
+      50%{transform:translate(40px,20px) scale(1.15);}
+      100%{transform:translate(0,0) scale(1);}
     }
     h1,h2,h3{
       font-family:'Playfair Display',serif;
       color:var(--gold);
       letter-spacing:.5px;
+      position:relative;
+      text-shadow:0 0 6px rgba(var(--gold-rgb),.35);
     }
-    a{color:var(--gold);text-decoration:none;}
-    a:hover{color:#fff;}
+    h2:after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:70px;
+      height:3px;
+      background:var(--gold-grad);
+      border-radius:4px;
+      box-shadow:0 0 8px rgba(var(--gold-rgb),.55);
+    }
+    a{color:var(--gold);text-decoration:none;transition:.35s;}
+    a:hover{color:#fff;text-shadow:0 0 6px rgba(var(--gold-rgb),.5);}
     nav{background:#000;}
-    .nav-link{color:#fff!important;font-weight:600;letter-spacing:.5px;}
+    .nav-link{color:#fff!important;font-weight:600;letter-spacing:.5px;position:relative;}
+    .nav-link:after{
+      content:"";
+      position:absolute;
+      left:50%;bottom:3px;
+      width:0;height:2px;
+      background:var(--gold-grad);
+      transform:translateX(-50%);
+      transition:.4s;
+      border-radius:2px;
+      box-shadow:0 0 6px rgba(var(--gold-rgb),.6);
+    }
+    .nav-link:hover:after, .nav-link:focus:after{width:60%;}
     #home{
       position:relative;
       height:80vh;
@@ -41,8 +101,10 @@
       overflow:hidden;
       padding-top:56px;
     }
-    #home iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
-    .overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.85));z-index:-1;}
+    #home iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.75) saturate(115%) contrast(105%);}
+    .overlay{position:absolute;inset:0;background:
+      linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.88)),
+      radial-gradient(circle at 70% 35%,rgba(var(--gold-rgb),.18),transparent 65%);z-index:-1;}
     .button{
       background:var(--gold-grad);
       color:#000;
@@ -50,244 +112,314 @@
       border:none;
       border-radius:40px;
       font-weight:700;
-      letter-spacing:.5px;
-      box-shadow:0 6px 18px -6px rgba(255,215,0,.55);
-      transition:.4s;
+      letter-spacing:.55px;
+      box-shadow:0 8px 26px -10px rgba(var(--gold-rgb),.65),0 0 0 1px rgba(255,255,255,.15) inset;
+      transition:.5s;
       display:inline-block;
+      position:relative;
+      overflow:hidden;
     }
-    .button:hover{filter:brightness(1.08);transform:translateY(-3px);color:#000;}
+    .button:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,rgba(255,255,255,.55),transparent 60%);
+      mix-blend-mode:overlay;
+      opacity:0;
+      transition:.6s;
+    }
+    .button:hover{
+      filter:brightness(1.08);
+      transform:translateY(-4px);
+      box-shadow:0 10px 34px -12px rgba(var(--gold-rgb),.8),0 0 0 1px rgba(var(--gold-rgb),.35) inset;
+    }
+    .button:hover:before{opacity:.4;}
     section{
       max-width:1000px;
       margin:60px auto;
-      background:var(--panel);
-      padding:34px 26px 42px;
-      border-radius:18px;
+      background:linear-gradient(160deg,#1a1b21,#17181d 55%,#15161a);
+      padding:38px 30px 46px;
+      border-radius:22px;
       position:relative;
       overflow:hidden;
       animation:fadeIn .9s ease;
-      box-shadow:0 8px 28px -12px rgba(0,0,0,.7);
+      box-shadow:0 10px 40px -18px rgba(0,0,0,.85),0 0 22px -4px rgba(var(--gold-rgb),.2);
+      backdrop-filter:blur(6px);
     }
     section:before{
       content:"";
       position:absolute;
-      top:-30%;right:-20%;
-      width:420px;height:420px;
-      background:radial-gradient(circle at center,rgba(255,215,0,.18),transparent 70%);
-      filter:blur(40px);
+      top:-25%;right:-15%;
+      width:460px;height:460px;
+      background:
+        radial-gradient(circle at center,rgba(var(--gold-rgb),.25),transparent 70%);
+      filter:blur(60px);
       opacity:.55;
       pointer-events:none;
+      animation:softPulse 8s ease-in-out infinite;
+    }
+    @keyframes softPulse{
+      0%,100%{transform:scale(1);opacity:.5;}
+      50%{transform:scale(1.18);opacity:.7;}
     }
     @keyframes fadeIn{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
-    footer{background:#000;text-align:center;padding:28px 16px;font-size:.85rem;margin-top:80px;}
-    footer a{color:var(--gold);}
-    footer a:hover{color:#fff;}
-    ul.list-unstyled li{margin-bottom:6px;}
-
-    /* ====== INSTAGRAM AMELIORÉ (sans photos réelles) ====== */
-    #modeles{background:#191919;}
-    #modeles:before{background:radial-gradient(circle at 18% 25%,rgba(255,215,0,.22),transparent 60%);}
-    .ig-intro{max-width:640px;font-size:.95rem;opacity:.85;}
-    .ig-filter-bar{
-      margin-top:24px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .filter-btn{
-      background:#1f1f1f;
-      color:#bbb;
-      border:1px solid #333;
-      padding:9px 20px;
-      font-size:.7rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      border-radius:30px;
-      font-weight:600;
-      cursor:pointer;
-      transition:.45s;
-    }
-    .filter-btn.active,.filter-btn:hover{
-      background:var(--gold-grad);
-      color:#000;
-      border-color:var(--gold);
-    }
-    .ig-grid{
-      display:grid;
-      gap:26px;
-      grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-      margin-top:34px;
-    }
-    .ig-card{
-      background:#101010;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;
-      padding:18px 16px 16px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+    footer{
+      background:#050507;
+      text-align:center;
+      padding:34px 16px 40px;
+      font-size:.85rem;
       position:relative;
       overflow:hidden;
-      min-height:270px;
-      text-decoration:none;
-      color:#fff;
-      isolation:isolate;
-      transition:.55s cubic-bezier(.16,.8,.3,1);
-      box-shadow:0 10px 30px -16px rgba(0,0,0,.85);
     }
-    .ig-card:before{
+    footer:before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(140deg,rgba(255,215,0,.10),transparent 55%),
-        radial-gradient(circle at 85% 18%,rgba(255,215,0,.20),transparent 60%);
-      opacity:.55;
-      mix-blend-mode:overlay;
+        radial-gradient(circle at 50% 0,rgba(var(--gold-rgb),.18),transparent 70%);
+      opacity:.4;
+      filter:blur(40px);
       pointer-events:none;
-      transition:.6s;
     }
-    .ig-card:hover{
-      transform:translateY(-10px);
-      border-color:rgba(255,215,0,.65);
-      box-shadow:0 14px 42px -14px rgba(255,215,0,.55),0 12px 34px -12px rgba(0,0,0,.85);
-    }
-    .ig-card:hover:before{opacity:.8;}
-    .ig-top{
+    footer a{color:var(--gold);}
+    footer a:hover{color:#fff;}
+    ul.list-unstyled li{margin-bottom:6px;}
+
+    /* PARTICIPANTS */
+    #participants{background:linear-gradient(155deg,#1c1d23,#18191f);}
+    #participants:before{background:radial-gradient(circle at 18% 25%,rgba(var(--gold-rgb),.28),transparent 60%);filter:blur(70px);opacity:.45;}
+    .lineup-intro{max-width:640px;font-size:.95rem;opacity:.85;text-shadow:0 0 8px rgba(0,0,0,.55);}
+
+    .filter-bar{
+      margin-top:26px;
       display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .ig-avatar{
-      width:72px;
-      height:72px;
-      border-radius:18px;
-      background:
-        radial-gradient(circle at 32% 28%,rgba(255,215,0,.35),rgba(255,215,0,.05) 70%),
-        linear-gradient(135deg,#262626,#121212);
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family:'Playfair Display',serif;
-      font-size:1.55rem;
-      font-weight:700;
-      letter-spacing:.05em;
-      color:#fff;
-      overflow:hidden;
-    }
-    .ig-avatar:after{
-      content:attr(data-initial);
-      background:linear-gradient(120deg,#ffe07a,#c89d19);
-      -webkit-background-clip:text;
-      color:transparent;
-      filter:drop-shadow(0 4px 10px rgba(0,0,0,.8));
-    }
-    .ig-info{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-    }
-    .ig-handle{
-      font-weight:700;
-      font-size:.95rem;
-      letter-spacing:.5px;
-      display:flex;
-      align-items:center;
-      gap:6px;
-    }
-    .ig-role{
-      font-size:.63rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      opacity:.7;
-    }
-    .ig-tag{
-      font-size:.55rem;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      padding:4px 10px 3px;
-      border:1px solid rgba(255,215,0,.5);
-      border-radius:40px;
-      background:rgba(255,215,0,.1);
-      color:var(--gold);
-      font-weight:600;
-      margin-top:4px;
-      display:inline-block;
-    }
-    .ig-bio{
-      font-size:.72rem;
-      line-height:1.25rem;
-      opacity:.85;
-      flex-grow:1;
-    }
-    .ig-stats{
-      display:flex;
-      gap:14px;
+      gap:10px;
       flex-wrap:wrap;
-      font-size:.6rem;
-      letter-spacing:.15em;
-      opacity:.55;
     }
-    .ig-stats span b{color:var(--gold);font-weight:600;margin-right:3px;}
-    .ig-follow{
-      align-self:flex-start;
-      margin-top:10px;
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(6px);
-      padding:7px 16px 6px;
-      font-size:.62rem;
+    .filter-btn{
+      background:#202127;
+      color:#bbb;
+      border:1px solid #2f3036;
+      padding:7px 16px;
+      font-size:.58rem;
       letter-spacing:.22em;
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:30px;
       text-transform:uppercase;
+      border-radius:24px;
       font-weight:600;
+      cursor:pointer;
+      transition:.45s;
       position:relative;
       overflow:hidden;
-      color:var(--gold);
-      transition:.5s;
     }
-    .ig-follow:before{
+    .filter-btn:before{
       content:"";
       position:absolute;
       inset:0;
       background:var(--gold-grad);
       opacity:0;
-      transition:.55s;
+      transition:.5s;
     }
-    .ig-follow span{position:relative;z-index:2;}
-    .ig-card:hover .ig-follow{border-color:rgba(255,215,0,.8);color:#000;}
-    .ig-card:hover .ig-follow:before{opacity:1;}
-    .ig-card.hide{pointer-events:none;opacity:0;transform:scale(.88) translateY(24px);transition:.55s;}
-    .ig-note{
-      font-size:.62rem;
+    .filter-btn.active,.filter-btn:hover{
+      color:#111;
+      border-color:rgba(var(--gold-rgb),.7);
+      box-shadow:var(--glow-soft);
+    }
+    .filter-btn.active:before,.filter-btn:hover:before{opacity:1;}
+    .filter-btn span{position:relative;z-index:2;}
+
+    .people-grid{
+      display:grid;
+      gap:24px;
+      grid-template-columns:repeat(auto-fill,minmax(225px,1fr));
+      margin-top:34px;
+    }
+    .person-card{
+      background:linear-gradient(145deg,#17181d,#121216 70%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:16px 16px 18px;
+      display:flex;
+      flex-direction:column;
+      min-height:190px;
+      position:relative;
+      text-decoration:none;
+      color:#fff;
+      isolation:isolate;
+      transition:.55s cubic-bezier(.16,.8,.3,1);
+      box-shadow:0 8px 24px -16px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.05) inset;
+      overflow:hidden;
+    }
+    .person-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 85% 18%,rgba(var(--gold-rgb),.25),transparent 65%),
+        linear-gradient(120deg,rgba(var(--gold-rgb),.18),transparent 55%);
       opacity:.55;
-      margin-top:26px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      text-align:center;
+      mix-blend-mode:overlay;
+      pointer-events:none;
+      transition:.65s;
     }
-    /* Badge (ex: Nouveau) */
-    .ig-badge{
+    .person-card:hover{
+      transform:translateY(-8px) scale(1.015);
+      border-color:rgba(var(--gold-rgb),.55);
+      box-shadow:var(--glow-strong),0 12px 40px -14px rgba(0,0,0,.9);
+    }
+    .person-card:hover:before{opacity:.85;}
+    .p-cat{
       position:absolute;
       top:10px;
-      left:10px;
-      background:rgba(255,215,0,.12);
+      right:10px;
+      background:linear-gradient(120deg,rgba(var(--gold-rgb),.18),rgba(var(--gold-rgb),.05));
       color:var(--gold);
-      font-size:.55rem;
-      letter-spacing:.25em;
-      padding:5px 10px 4px;
-      border:1px solid rgba(255,215,0,.5);
-      border-radius:40px;
+      font-size:.52rem;
+      letter-spacing:.32em;
+      padding:5px 9px 4px;
+      border:1px solid rgba(var(--gold-rgb),.45);
+      border-radius:28px;
+      text-transform:uppercase;
+      font-weight:600;
       backdrop-filter:blur(6px);
+      box-shadow:0 0 10px -2px rgba(var(--gold-rgb),.55) inset;
+    }
+    .p-head{padding-right:74px;display:flex;flex-direction:column;gap:2px;}
+    .p-handle{
+      font-weight:700;
+      font-size:.93rem;
+      letter-spacing:.55px;
+      line-height:1.1;
+      text-shadow:0 0 6px rgba(var(--gold-rgb),.4);
+    }
+    .p-role{
+      font-size:.58rem;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      opacity:.72;
+      font-weight:600;
+      margin-top:3px;
+    }
+    .p-bio{
+      margin-top:12px;
+      font-size:.7rem;
+      line-height:1.12rem;
+      opacity:.92;
+      flex-grow:1;
+      text-shadow:0 0 4px rgba(0,0,0,.6);
+    }
+    .p-stats{
+      margin-top:10px;
+      display:flex;
+      gap:12px;
+      font-size:.53rem;
+      letter-spacing:.2em;
+      opacity:.55;
+      flex-wrap:wrap;
+    }
+    .p-stats span b{color:var(--gold);font-weight:700;margin-right:3px;text-shadow:0 0 6px rgba(var(--gold-rgb),.6);}
+    .p-action{
+      margin-top:12px;
+      align-self:flex-start;
+      background:#212227;
+      border:1px solid rgba(255,255,255,.18);
+      font-size:.48rem;
+      padding:6px 10px 5px;
+      line-height:1;
+      letter-spacing:.38em;
+      text-transform:uppercase;
+      font-weight:600;
+      border-radius:16px;
+      color:var(--gold);
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      position:relative;
+      overflow:hidden;
+      transition:.5s;
+      box-shadow:0 0 0 1px rgba(255,255,255,.05) inset;
+    }
+    .p-action:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:var(--gold-grad);
+      opacity:0;
+      transition:.5s;
+    }
+    .p-action span{position:relative;z-index:2;}
+    .person-card:hover .p-action{color:#111;border-color:rgba(var(--gold-rgb),.7);box-shadow:0 0 10px -2px rgba(var(--gold-rgb),.9);}
+    .person-card:hover .p-action:before{opacity:1;}
+    .person-card.hide{display:none !important;}
+
+    /* Bloc candidature */
+    .update-info{
+      max-width:1000px;
+      margin:-8px auto 60px;
+      background:linear-gradient(135deg,#1d1e24,#18191f 60%,#16171b);
+      border:1px solid rgba(var(--gold-rgb),.4);
+      color:#eaeaea;
+      padding:22px 26px 24px;
+      border-radius:20px;
+      font-size:.78rem;
+      display:grid;
+      gap:10px;
+      box-shadow:0 8px 36px -16px rgba(0,0,0,.85),0 0 26px -6px rgba(var(--gold-rgb),.35);
+      line-height:1.25rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .update-info:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 75% 18%,rgba(var(--gold-rgb),.35),transparent 70%),
+        linear-gradient(120deg,rgba(var(--gold-rgb),.18),transparent 60%);
+      opacity:.55;
+      mix-blend-mode:overlay;
+      pointer-events:none;
+    }
+    .li-handle{
+      font-weight:700;
+      font-size:1.05rem;
+      letter-spacing:.6px;
+      color:var(--gold);
+      text-shadow:0 0 8px rgba(var(--gold-rgb),.6);
+    }
+    .li-role{
+      font-size:.6rem;
+      letter-spacing:.3em;
+      text-transform:uppercase;
+      opacity:.85;
       font-weight:600;
     }
+    .li-text{font-size:.8rem;opacity:.92;max-width:760px;}
+    .li-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+    }
+    /* Only POSTULER remains */
+    .li-tags span{
+      font-size:.55rem;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      padding:6px 14px 5px;
+      border:1px solid rgba(var(--gold-rgb),.5);
+      border-radius:26px;
+      background:linear-gradient(120deg,rgba(var(--gold-rgb),.15),rgba(var(--gold-rgb),.05));
+      font-weight:600;
+      color:var(--gold);
+      box-shadow:0 0 6px -1px rgba(var(--gold-rgb),.55) inset;
+    }
+
     @media (max-width:680px){
-      .ig-grid{gap:20px;}
-      .ig-card{min-height:260px;padding:16px 14px;}
-      #home .display-1{font-size:2.55rem;}
-      section{margin:50px 14px;padding:30px 22px;}
+      .people-grid{gap:18px;}
+      .person-card{min-height:185px;padding:16px 14px;}
+      #home .display-1{font-size:2.4rem;}
+      section{margin:50px 14px;padding:32px 22px;}
+      .update-info{margin:-4px 14px 54px;padding:20px 20px;}
     }
   </style>
 </head>
@@ -305,7 +437,7 @@
           <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="#programme">Programme</a></li>
           <li class="nav-item"><a class="nav-link" href="#packs">Packs & Entrées</a></li>
-          <li class="nav-item"><a class="nav-link" href="#modeles">Modèles</a></li>
+          <li class="nav-item"><a class="nav-link" href="#participants">Participants</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -366,111 +498,102 @@
     <a href="https://zeeven.com/[LIEN-ZE-EVEN]" class="button" target="_blank" rel="noopener">Acheter via Ze Even</a>
   </section>
 
-  <!-- MODELES / INSTAGRAM -->
-  <section id="modeles">
-    <h2>Modèles Instagram</h2>
-    <p class="ig-intro">
-      Pas besoin de photos de profil : un style premium génère automatiquement un avatar avec leurs initiales.
-      Filtrez entre les <strong>Modèles</strong> et l'<strong>Agence</strong>.
+  <!-- PARTICIPANTS -->
+  <section id="participants">
+    <h2>Participants & Line-up</h2>
+    <p class="lineup-intro">
+      Modèles, DJs & Agence présents. Filtrez pour afficher uniquement une catégorie. Les cartes se réorganisent automatiquement.
     </p>
 
-    <!-- Filtres (Seulement Modèles & Agence) -->
-    <div class="ig-filter-bar">
-      <button class="filter-btn active" data-filter="all">Tous</button>
-      <button class="filter-btn" data-filter="modele">Modèles</button>
-      <button class="filter-btn" data-filter="agence">Agence</button>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all"><span>Tous</span></button>
+      <button class="filter-btn" data-filter="modele"><span>Modèles</span></button>
+      <button class="filter-btn" data-filter="dj"><span>DJs</span></button>
+      <button class="filter-btn" data-filter="agence"><span>Agence</span></button>
     </div>
 
-    <div class="ig-grid" id="igGrid">
-      <!-- MODELE 1 -->
-      <a class="ig-card" data-cat="modele" href="https://www.instagram.com/emilieboutoille/" target="_blank" rel="noopener" aria-label="Profil Instagram @emilieboutoille">
-        <div class="ig-badge">Présente</div>
-        <div class="ig-top">
-          <div class="ig-avatar" data-initial="E"></div>
-          <div class="ig-info">
-            <div class="ig-handle">@emilieboutoille</div>
-            <div class="ig-role">Modèle • Photo</div>
-            <span class="ig-tag">Modèle</span>
-          </div>
+    <div class="people-grid" id="peopleGrid">
+      <a class="person-card" data-cat="modele" href="https://www.instagram.com/emilieboutoille/" target="_blank" rel="noopener">
+        <div class="p-cat">Modèle</div>
+        <div class="p-head">
+          <div class="p-handle">@emilieboutoille</div>
+          <div class="p-role">Modèle / Photo</div>
         </div>
-        <div class="ig-bio">
-          Mise en avant des looks & backstage shootings durant l’événement. Interactions avec les invités.
-        </div>
-        <div class="ig-stats">
+        <div class="p-bio">Looks & backstage shooting pendant l’événement, interactions premium avec les invités.</div>
+        <div class="p-stats">
           <span><b>+35K</b>FOLLOWERS</span>
           <span><b>ENG</b>4.2%</span>
         </div>
-        <div class="ig-follow"><span>Suivre</span></div>
+        <div class="p-action"><span>Instagram</span></div>
       </a>
 
-      <!-- MODELE 2 -->
-      <a class="ig-card" data-cat="modele" href="https://www.instagram.com/alice.carron/" target="_blank" rel="noopener" aria-label="Profil Instagram @alice.carron">
-        <div class="ig-badge">Stylisme</div>
-        <div class="ig-top">
-          <div class="ig-avatar" data-initial="A"></div>
-          <div class="ig-info">
-            <div class="ig-handle">@alice.carron</div>
-            <div class="ig-role">Collaboratrice / Styliste</div>
-            <span class="ig-tag">Modèle</span>
-          </div>
+      <a class="person-card" data-cat="modele" href="https://www.instagram.com/alice.carron/" target="_blank" rel="noopener">
+        <div class="p-cat">Modèle</div>
+        <div class="p-head">
+          <div class="p-handle">@alice.carron</div>
+          <div class="p-role">Collaboratrice / Styliste</div>
         </div>
-        <div class="ig-bio">
-          Coordination style + création de contenus modes & conseils pour les participants.
-        </div>
-        <div class="ig-stats">
+        <div class="p-bio">Coordination style & conseils mode, création de contenus looks et ambiance fashion.</div>
+        <div class="p-stats">
           <span><b>+12K</b>FOLLOWERS</span>
           <span><b>LOOKS</b>Mode</span>
         </div>
-        <div class="ig-follow"><span>Suivre</span></div>
+        <div class="p-action"><span>Instagram</span></div>
       </a>
 
-      <!-- MODELE 3 (Slot disponible) -->
-      <div class="ig-card" data-cat="modele" aria-label="Slot disponible pour un modèle">
-        <div class="ig-badge">Ouvert</div>
-        <div class="ig-top">
-          <div class="ig-avatar" data-initial="+"></div>
-          <div class="ig-info">
-            <div class="ig-handle">@votreprofil</div>
-            <div class="ig-role">Candidature en cours</div>
-            <span class="ig-tag">Modèle</span>
-          </div>
+      <a class="person-card" data-cat="dj" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <div class="p-cat">DJ</div>
+        <div class="p-head">
+          <div class="p-handle">@dj_afroshatta</div>
+          <div class="p-role">Afro / Shatta</div>
         </div>
-        <div class="ig-bio">
-          Vous souhaitez intégrer la line-up ? Envoyez votre profil (Instagram / Book) via le formulaire de contact.
+        <div class="p-bio">Sélection afro & shatta pour l’espace piscine. Énergie early & peak time.</div>
+        <div class="p-stats">
+          <span><b>MIX</b>Live</span>
+          <span><b>ZONE</b>Bas</span>
         </div>
-        <div class="ig-stats">
-          <span><b>OPEN</b>SLOT</span>
-          <span><b>2025</b>Lineup</span>
-        </div>
-        <div class="ig-follow"><span>Postuler</span></div>
-      </div>
-
-      <!-- AGENCE -->
-      <a class="ig-card" data-cat="agence" href="https://www.instagram.com/hyperion_digital_/" target="_blank" rel="noopener" aria-label="Profil Instagram @hyperion_digital_">
-        <div class="ig-badge">Agence</div>
-        <div class="ig-top">
-          <div class="ig-avatar" data-initial="H"></div>
-          <div class="ig-info">
-            <div class="ig-handle">@hyperion_digital_</div>
-            <div class="ig-role">Agence Mode & Shootings</div>
-            <span class="ig-tag">Agence</span>
-          </div>
-        </div>
-        <div class="ig-bio">
-          Direction artistique, contenu premium & coordination photographes pour la soirée On The Rock.
-        </div>
-        <div class="ig-stats">
-          <span><b>Prod</b>Équipe</span>
-          <span><b>+PRO</b>Network</span>
-        </div>
-        <div class="ig-follow"><span>Visiter</span></div>
+        <div class="p-action"><span>Instagram</span></div>
       </a>
-    </div>
 
-    <div class="ig-note">
-      Avatars générés automatiquement (initiales). Remplacez-les par de vraies photos si vous en obtenez.
+      <a class="person-card" data-cat="dj" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <div class="p-cat">DJ</div>
+        <div class="p-head">
+          <div class="p-handle">@dj_houseelectro</div>
+          <div class="p-role">House / Electro / Commercial</div>
+        </div>
+        <div class="p-bio">House mélodique, électro & hits club pour l’étage jusqu’au petit matin.</div>
+        <div class="p-stats">
+          <span><b>SET</b>Extended</span>
+          <span><b>ZONE</b>Haut</span>
+        </div>
+        <div class="p-action"><span>Instagram</span></div>
+      </a>
+
+      <a class="person-card" data-cat="agence" href="https://www.instagram.com/hyperion_digital_/" target="_blank" rel="noopener">
+        <div class="p-cat">Agence</div>
+        <div class="p-head">
+          <div class="p-handle">@hyperion_digital_</div>
+          <div class="p-role">Agence Mode & Shootings</div>
+        </div>
+        <div class="p-bio">Direction artistique, contenu premium & coordination photographes pour magnifier l’expérience.</div>
+        <div class="p-stats">
+          <span><b>PROD</b>Équipe</span>
+          <span><b>+PRO</b>Réseau</span>
+        </div>
+        <div class="p-action"><span>Instagram</span></div>
+      </a>
     </div>
   </section>
+
+  <!-- Bloc candidature (uniquement POSTULER) -->
+  <div class="update-info">
+    <div class="li-handle">@votreprofil</div>
+    <div class="li-role">Candidature</div>
+    <div class="li-text">Intéressé(e) pour rejoindre la line-up modèles ? Envoyez votre profil depuis la section contact.</div>
+    <div class="li-tags">
+      <span>POSTULER</span>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section id="contact">
@@ -502,32 +625,22 @@
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Filtrage (Seulement 'modele' et 'agence')
-    const filterButtons=document.querySelectorAll('.filter-btn');
-    const igCards=document.querySelectorAll('.ig-card');
+    // Filtrage
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const personCards  = document.querySelectorAll('.person-card');
+
     filterButtons.forEach(btn=>{
       btn.addEventListener('click',()=>{
-        const cat=btn.dataset.filter;
+        const cat = btn.dataset.filter;
         filterButtons.forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
-        igCards.forEach(card=>{
-          if(cat==='all' || card.dataset.cat===cat){
+        personCards.forEach(card=>{
+          if(cat === 'all' || card.dataset.cat === cat){
             card.classList.remove('hide');
           }else{
             card.classList.add('hide');
           }
         });
-      });
-    });
-
-    // Interaction pseudo "follow" / "postuler"
-    document.querySelectorAll('.ig-follow').forEach(button=>{
-      button.addEventListener('click',e=>{
-        e.preventDefault();
-        if(button.dataset.done) return;
-        button.dataset.done="1";
-        button.innerHTML='<span>✔ OK</span>';
-        button.style.pointerEvents='none';
       });
     });
   </script>
